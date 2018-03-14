@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tools</title>
+  <script src="./assets/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+<link rel="import" href="./render/qrcode/index.html" data-importpage="qrcode">
+<link rel="import" href="./render/jsonformat/index.html" data-importpage="jsonformat">
+<link rel="import" href="./render/encode/index.html" data-importpage="encode">
+<div id="container">
+  <div id="content">
+    <div id="btn-list">
+      <div class="btn-item" data-page="qrcode">生成二维码</div>
+      <div class="btn-item" data-page="jsonformat">格式化JSON</div>
+      <div class="btn-item" data-page="encode">字符串编码</div>
+    </div>
+  </div>
+  <div id="page-wrap">
+     <div id="page-template-container"></div>
+     <div id="page-wrap-close">X</div>
+  </div>
+</div>
+
+<body>
+  <script>
+    require('./main-process/index.js')
+    require('./renderer.js')
+  </script>
+</body>
+
+</html>
