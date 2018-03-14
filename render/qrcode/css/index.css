@@ -7513,3 +7513,10 @@ hr.x-hr {
 .panel-heading .x-tips i {
     color: #f00
 }
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+    margin: 15px 0;
+}

@@ -1,4 +1,5 @@
 const $ = require("jquery");
+const fetchRandomImg = require("./fetchRandomImg");
 var $item = $(".btn-item"),
   $links = $('link[rel="import"]'),
   $pageContainer = $("#page-wrap"),
@@ -19,3 +20,28 @@ $item.on("click", function() {
     .find("#page-template-container")
     .html(html);
 });
+
+var $randomImg = $("#random-bg"),
+  $fengche = $("#fengche"),
+  isFetchingImg = false;
+
+$randomImg.on("click", function() {
+  if (isFetchingImg) {
+    return;
+  }
+  isFetchingImg = true;
+  $fengche.addClass("xuanzhuan");
+  fetchRandomImg().then(
+    data => {
+      if (data) {
+      } else {
+      }
+      $fengche.removeClass("xuanzhuan");
+    },
+    () => {
+      $fengche.removeClass("xuanzhuan");
+    }
+  );
+});
+
+// $item.filter('[data-page="encode"]').trigger("click");

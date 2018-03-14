@@ -7477,3 +7477,9 @@ a.x-a-high {
 .ui-ml-05 {
     margin-left: 5px
 }
+.title {
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+    margin: 15px 0;
+}
