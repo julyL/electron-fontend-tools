@@ -139,13 +139,40 @@ var MSG_TYPE = {
   AJAX_DEBUGGER_CONSOLE: "ajax-debugger-console",
   AJAX_DEBUGGER_SWITCH: "ajax-debugger-switch"
 };
-var FILE = { STYLE: "style", LINK: "link", SCRIPT: "script-block" };
+var FILE = {
+  STYLE: "style",
+  LINK: "link",
+  SCRIPT: "script-block"
+};
 var PUBLIC_ID_WHITE_LIST = {
-  "": { systemIds: { "": true } },
-  "-//W3C//DTD HTML 3.2 Final//EN": { systemIds: { "": true } },
-  "-//W3C//DTD HTML 4.0//EN": { systemIds: { "": true, "http://www.w3.org/TR/html4/strict.dtd": true } },
-  "-//W3C//DTD HTML 4.01//EN": { systemIds: { "": true, "http://www.w3.org/TR/html4/strict.dtd": true } },
-  "-//W3C//DTD HTML 4.0 Transitional//EN": { systemIds: { "": true, "http://www.w3.org/TR/html4/loose.dtd": true } },
+  "": {
+    systemIds: {
+      "": true
+    }
+  },
+  "-//W3C//DTD HTML 3.2 Final//EN": {
+    systemIds: {
+      "": true
+    }
+  },
+  "-//W3C//DTD HTML 4.0//EN": {
+    systemIds: {
+      "": true,
+      "http://www.w3.org/TR/html4/strict.dtd": true
+    }
+  },
+  "-//W3C//DTD HTML 4.01//EN": {
+    systemIds: {
+      "": true,
+      "http://www.w3.org/TR/html4/strict.dtd": true
+    }
+  },
+  "-//W3C//DTD HTML 4.0 Transitional//EN": {
+    systemIds: {
+      "": true,
+      "http://www.w3.org/TR/html4/loose.dtd": true
+    }
+  },
   "-//W3C//DTD HTML 4.01 Transitional//EN": {
     systemIds: {
       "": true,
@@ -153,22 +180,67 @@ var PUBLIC_ID_WHITE_LIST = {
       "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd": true
     }
   },
-  "-//W3C//DTD XHTML 1.1//EN": { systemIds: { "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd": true } },
-  "-//W3C//DTD XHTML Basic 1.0//EN": { systemIds: { "http://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd": true } },
-  "-//W3C//DTD XHTML 1.0 Strict//EN": { systemIds: { "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd": true } },
-  "-//W3C//DTD XHTML 1.0 Transitional//EN": {
-    systemIds: { "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd": true }
+  "-//W3C//DTD XHTML 1.1//EN": {
+    systemIds: {
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd": true
+    }
   },
-  "ISO/IEC 15445:1999//DTD HyperText Markup Language//EN": { systemIds: { "": true } },
-  "ISO/IEC 15445:2000//DTD HTML//EN": { systemIds: { "": true } },
-  "ISO/IEC 15445:1999//DTD HTML//EN": { systemIds: { "": true } }
+  "-//W3C//DTD XHTML Basic 1.0//EN": {
+    systemIds: {
+      "http://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd": true
+    }
+  },
+  "-//W3C//DTD XHTML 1.0 Strict//EN": {
+    systemIds: {
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd": true
+    }
+  },
+  "-//W3C//DTD XHTML 1.0 Transitional//EN": {
+    systemIds: {
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd": true
+    }
+  },
+  "ISO/IEC 15445:1999//DTD HyperText Markup Language//EN": {
+    systemIds: {
+      "": true
+    }
+  },
+  "ISO/IEC 15445:2000//DTD HTML//EN": {
+    systemIds: {
+      "": true
+    }
+  },
+  "ISO/IEC 15445:1999//DTD HTML//EN": {
+    systemIds: {
+      "": true
+    }
+  }
 };
 var COMPAT_MODE_DIFF_PUBLIC_ID_MAP = {
   "-//W3C//DTD HTML 4.0 Transitional//EN": {
-    systemIds: { "http://www.w3.org/TR/html4/loose.dtd": { IE: "S", WebKit: "Q" } }
+    systemIds: {
+      "http://www.w3.org/TR/html4/loose.dtd": {
+        IE: "S",
+        WebKit: "Q"
+      }
+    }
   },
-  "ISO/IEC 15445:2000//DTD HTML//EN": { systemIds: { "": { IE: "Q", WebKit: "S" } } },
-  "ISO/IEC 15445:1999//DTD HTML//EN": { systemIds: { "": { IE: "Q", WebKit: "S" } } }
+  "ISO/IEC 15445:2000//DTD HTML//EN": {
+    systemIds: {
+      "": {
+        IE: "Q",
+        WebKit: "S"
+      }
+    }
+  },
+  "ISO/IEC 15445:1999//DTD HTML//EN": {
+    systemIds: {
+      "": {
+        IE: "Q",
+        WebKit: "S"
+      }
+    }
+  }
 };
 var HTML_DEPRECATED_TAGS = {
   acronym: "定义首字母缩写",
@@ -190,13 +262,34 @@ var HTML_DEPRECATED_TAGS = {
   layer: "定义层"
 };
 var HTML_DEPRECATED_ATTRIBUTES = {
-  align: { iframe: true, img: true, object: true, table: true },
-  color: { font: true },
-  height: { td: true, th: true },
-  language: { script: true },
-  noshade: { hr: true },
-  nowrap: { td: true, th: true },
-  size: { hr: true, font: true, basefont: true }
+  align: {
+    iframe: true,
+    img: true,
+    object: true,
+    table: true
+  },
+  color: {
+    font: true
+  },
+  height: {
+    td: true,
+    th: true
+  },
+  language: {
+    script: true
+  },
+  noshade: {
+    hr: true
+  },
+  nowrap: {
+    td: true,
+    th: true
+  },
+  size: {
+    hr: true,
+    font: true,
+    basefont: true
+  }
 };
 var BLOCK_HTML_ELEMENT = [
   "address",
@@ -585,7 +678,15 @@ baidu.endecode = (function() {
     }
     return k;
   };
-  return { uniEncode: f, uniDecode: a, base64Encode: g, base64Decode: b, utf8Encode: e, utf8Decode: i, utf16to8: d };
+  return {
+    uniEncode: f,
+    uniDecode: a,
+    base64Encode: g,
+    base64Decode: b,
+    utf8Encode: e,
+    utf8Decode: i,
+    utf16to8: d
+  };
 })();
 baidu.qrcode = (function() {
   var g = "";
@@ -632,10 +733,16 @@ baidu.qrcode = (function() {
       $("#preview")
         .html("")
         .qrcode(d());
+      $("#download_button").css({ "pointer-events": "all" });
     } else {
       $("#preview").html("再在输入框里输入一些内容，就能生成二维码了哦~");
+      $("#download_button").css({ "pointer-events": "none" });
     }
     $("#fieldset_qr").show();
+    var canvas = $("#preview canvas")[0];
+    canvas.toBlob(function(blob) {
+      $("#download_button").attr("href", URL.createObjectURL(blob));
+    });
   };
   var c = function(i) {
     if (/image\//.test(i.type)) {
@@ -694,6 +801,8 @@ baidu.qrcode = (function() {
       $("#codeSource").focus();
     });
   };
-  return { init: f };
+  return {
+    init: f
+  };
 })();
 baidu.qrcode.init();

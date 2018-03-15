@@ -7,12 +7,16 @@
   <script src="./assets/js/jquery.min.js"></script>
   <link rel="stylesheet" href="./assets/css/index.css">
 </head>
+<link rel="import" href="./render/minifyimg/index.html" data-importpage="minifyimg">
 <link rel="import" href="./render/qrcode/index.html" data-importpage="qrcode">
 <link rel="import" href="./render/jsonformat/index.html" data-importpage="jsonformat">
 <link rel="import" href="./render/encode/index.html" data-importpage="encode">
 <div id="container">
   <div id="content">
     <div id="btn-list">
+      <div class="btn-item" data-page="minifyimg">
+        <div class="item-word">图片压缩</div>
+      </div>
       <div class="btn-item" data-page="qrcode">
         <div class="item-word">生成二维码</div>
       </div>
@@ -43,4 +47,5 @@
     require('./renderer.js')
   </script>
 </body>
+
 </html>

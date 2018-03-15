@@ -805,7 +805,7 @@ var JsonFormatEntrance = (function() {
     C = ["/* ", A, " */", "\n", C].join("");
     var z = new Blob([C], { type: "application/octet-stream" });
     var y = $('<a id="btnDownload" target="_blank" title="保存到本地">下载JSON数据</a>').prependTo("#optionBar");
-    y.attr("download", "FeHelper-" + D + ".json");
+    y.attr("download", D + ".json");
     y.attr("href", URL.createObjectURL(z));
   };
   var l = function(y) {

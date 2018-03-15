@@ -23,10 +23,10 @@ $item.on("click", function() {
   var page = $(this).attr("data-page");
   console.log(page);
   html = $links.filter('[data-importpage="' + page + '"]')[0].import.querySelector(".page-template").innerHTML;
-  $pageContainer
-    .show()
-    .find("#page-template-container")
-    .html(html);
+  $pageContainer.find("#page-template-container").html(html);
+  setTimeout(() => {
+    $pageContainer.show();
+  }, 17);
 });
 
 var $randomImg = $("#random-bg"),
@@ -68,8 +68,10 @@ function updateBackgroundImage(ispreload) {
     .then(
       originImageUrl => {
         if (!ispreload) {
-          store.set("backgroundImage", bgImg);
-          $container.css("background-image", `url(${bgImg})`);
+          if (bgImg) {
+            store.set("backgroundImage", bgImg);
+            $container.css("background-image", `url(${bgImg})`);
+          }
           $fengche.removeClass("xuanzhuan");
           bgImg = originImageUrl;
         }
@@ -110,4 +112,4 @@ function loadImg(url) {
     image.src = url;
   });
 }
-// $item.filter('[data-page="encode"]').trigger("click");
+// $item.filter('[data-page="minifyimg"]').trigger("click");

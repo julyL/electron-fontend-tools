@@ -7520,3 +7520,15 @@ hr.x-hr {
     color: #000;
     margin: 15px 0;
 }
+
+#download_button {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#download_button:hover {
+    background-color: #ec971f;
+    border-color: #d58512;
+}
