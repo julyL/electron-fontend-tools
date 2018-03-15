@@ -1,6 +1,6 @@
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     font-size: 15px;
     font-family: "roboto", "Arial"
 }
@@ -145,6 +145,7 @@ html {
     background-size: 110%;
     margin: auto
 }
+
 #logo {
     display: block;
     margin: 0 auto;
@@ -645,4 +646,51 @@ input[type=range]::-moz-range-track {
     color: #ff93b7;
     font-family: Arial;
     font-weight: bold;
+}
+
+#btn-cropper {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    background: #FF93B7;
+    color: #fff;
+    border-radius: 3px;
+    vertical-align: middle;
+    cursor: pointer;
+    overflow: hidden;
+    line-height: 40px;
+    margin-left: 6px;
+    transition: width 0.4s;
+    text-align: center;
+}
+
+#cropper-box {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.croppper-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    max-width: 970px;
+}
+.finish-cropper{
+    cursor: pointer;
+    position: absolute;
+    top:10px;
+    right:10px;
+    background:#000;
+    color:#fff;
+    text-align: center;
+    width:100px;
+    line-height:40px;
 }

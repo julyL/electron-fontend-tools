@@ -13,6 +13,10 @@ if (bgimg) {
   $container.css("background-image", `url(${bgimg})`);
 }
 
+$item.on("animationend", () => {
+  $item.removeClass("zoomIn animated");
+});
+
 // 关闭页面
 $close.on("click", function() {
   $pageContainer.hide();

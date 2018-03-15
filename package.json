@@ -4,7 +4,12 @@
   "description": "a collecting tools",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",    
+    "package": "npm-run-all package:*",
+    "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64",
+    "package:win32": "electron-packager . --overwrite --platform=win32 --arch=ia32",
+    "package:win64": "electron-packager . --overwrite --platform=win32 --arch=x64",
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64"
   },
   "repository": "https://github.com/julyL/electron-fontend-tools",
   "keywords": [
