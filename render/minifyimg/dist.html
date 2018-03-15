@@ -35,8 +35,11 @@
                         <input type="file" id="input" multiple accept=".jpg, .jpeg">
                     </span>
                 </div>
-                <span id="dld">下载文件</span>
                 <span id="btn-cropper">裁剪图片</span>
+                <div>
+                    <span id="uploadimg">上传图片</span>
+                    <span id="dld">下载文件</span>
+                </div>
                 <ul class="compress_info" id="compress_info">
                     <li>压缩耗时:
                         <span id="duration"></span>
@@ -91,32 +94,48 @@
             <script src="./js/index.js"></script>
         </footer>
         <div id="cropper-box">
-            <img src="" alt="" class="croppper-img">
-            <div class="finish-cropper">进行裁剪</div>
+            <div class="croppper-img-wrap">
+                <img src="" alt="" class="croppper-img">
+            </div>
+            <div class="close-btn">关闭</div>
+            <a class="finish-cropper" download="cropper.jpg">下载裁剪图片</a>
         </div>
     </div>
     <script>
-        var imgurl = $("#before").attr("src"),
-            $image = $(".croppper-img");
-        $image.attr("src", imgurl)
-        var cropper = new Cropper($image[0], {
-            aspectRatio: 16 / 9,
-            crop: function (event) {
-                console.log(event.detail.x);
-                console.log(event.detail.y);
-                console.log(event.detail.width);
-                console.log(event.detail.height);
-                console.log(event.detail.rotate);
-                console.log(event.detail.scaleX);
-                console.log(event.detail.scaleY);
-            }
-        });
-        $(".finish-cropper").on("click", function () {
-            console.log('111');
-            cropper.getCroppedCanvas().toBlob(function (blob) {
-                console.log(blob);
+        var imgurl,
+            $compressImage = $("#after"),
+            $image = $(".croppper-img"),
+            $box = $("#cropper-box"),
+            $cropperImgWrap = $("#croppper-img-wrap");
+
+
+        $("#btn-cropper").on("click", function () {
+            $image.attr("src", $compressImage.attr("src"));
+            $cropperImgWrap.css({
+                height: $compressImage.height(),
+                width: $compressImage.width()
             })
+            $box.show();
+
+            $image.cropper("destroy");
+            $image.cropper({
+                aspectRatio: 16 / 9
+            });
         })
+
+        $(".close-btn").on("click", function () {
+            $box.hide();
+        })
+
+        $(".finish-cropper").on("click", function () {
+            var canvas = $image.cropper("getCroppedCanvas");
+            $(".finish-cropper").attr('href', canvas.toDataURL("image/png"));
+        });
+
+        $("#uploadimg").on("click", function () {
+            $("#input").trigger("click");
+        })
+
     </script>
 </body>
 

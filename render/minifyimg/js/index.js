@@ -61631,7 +61631,7 @@ function minify(){
         picReader.readAsDataURL(input.files[0]);
         setTimeout(function() {
             var file = input.files[0];
-            getImageData(file).then(data=>{
+            getImageData(file).then(data=>{ 
                 var now = performance.now();
                 var result = picdiet(data, {
                     quality: g('q_value').value
@@ -61670,7 +61670,8 @@ function minify(){
                 g('compress_info').classList.add('show');
                 g('up_txt').innerHTML = g('recompress').value;
                 g('dld').style.width = '120px';
-                g('dld_original').style.display = 'none';
+                // g('dld_original').style.display = 'none';
+                g('uploadimg').style.width = "120px";
             }
             )
         }, 100)
