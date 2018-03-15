@@ -156,16 +156,21 @@ body {
   }
 }
 #random-bg:hover .canpreview {
-  display: block;
+  visibility: visible;
+  left:-111px;
+  opacity: 1;
 }
 #preview-img-w {
-  display: none;
+  visibility: hidden;
   position: absolute;
   top: -120px;
-  left: -111px;
+  left: -120px;
   border: 1px solid #fff;
+  opacity:.5;
+  transition: all .3s;
 }
 .preview-img {
   width: 150px;
   height: 100px;
+  display: block;
 }

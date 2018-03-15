@@ -8,15 +8,20 @@ var imglist = [], //抓取到的图片列表
 
 function fetchImgIdFromPage() {
   var randomImgMsg = store.get("randomImgMsg");
-  if (typeof randomImgMsg != "object") {
-    randomImgMsg = { page: 1, index: 1 };
+  if (typeof randomImgMsg != "object" || randomImgMsg === null) {
+    randomImgMsg = {
+      page: 1,
+      index: 1
+    };
   }
-  var url = "https://alpha.wallhaven.cc/search?q=nature&search_image=&categories=110&purity=110&sorting=favorites&order=desc&page=" + randomImgMsg.page;
+  var url =
+    "https://alpha.wallhaven.cc/search?q=nature&search_image=&categories=110&purity=110&sorting=favorites&order=desc&page=" +
+    randomImgMsg.page;
   return new Promise((re, rj) => {
-    if (randomImgMsg.index == imgNumberInPage) {
+    if (randomImgMsg.index == imgNumberInPage - 1) {
       store.set("randomImgMsg", {
         page: Math.min(randomImgMsg.page + 1, totalPages),
-        index: 1
+        index: 0
       });
       imglist = [];
     } else {
@@ -25,6 +30,7 @@ function fetchImgIdFromPage() {
         index: randomImgMsg.index + 1
       });
     }
+    // 已经从页面中爬取了图片列表则直接返回相应的图片编号
     if (imglist.length > 0) {
       let imgid = splitIdFromPath(imglist[randomImgMsg.index + 1]);
       re(imgid);

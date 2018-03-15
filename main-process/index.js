@@ -1,15 +1,24 @@
 const $ = require("jquery");
-const fetchimgIdFromPage = require("./fetchimgIdFromPage");
+const store = require("./store");
+const fetchImgIdFromPage = require("./fetchImgIdFromPage");
 var $item = $(".btn-item"),
   $links = $('link[rel="import"]'),
   $pageContainer = $("#page-wrap"),
   $close = $("#page-wrap-close"),
+  $container = $("#container"),
   html;
 
+var bgimg = store.get("backgroundImage");
+if (bgimg) {
+  $container.css("background-image", `url(${bgimg})`);
+}
+
+// 关闭页面
 $close.on("click", function() {
   $pageContainer.hide();
 });
 
+// 切换页面
 $item.on("click", function() {
   var page = $(this).attr("data-page");
   console.log(page);
@@ -37,17 +46,19 @@ $randomImg.on("click", function() {
 });
 
 function updateBackgroundImage(ispreload) {
-  debugger;
+  // debugger;
   if (isFetchingImg) {
     return;
   }
   isFetchingImg = true;
-  fetchimgIdFromPage()
+  fetchImgIdFromPage()
     .then(imgId => {
       if (imgId) {
         $(".preview-img").attr("src", getImgUrlFromId(imgId, "preview"));
         imgurl = getImgUrlFromId(imgId);
-        $("#preview-img-w").addClass("canpreview");
+        $("#preview-img-w")
+          .addClass("canpreview")
+          .fadeIn();
         return loadImg(imgurl);
       } else {
         $("#preview-img-w").removeClass("canpreview");
@@ -57,20 +68,23 @@ function updateBackgroundImage(ispreload) {
     .then(
       originImageUrl => {
         if (!ispreload) {
-          $("#container").css("background-image", `url(${bgImg})`);
+          store.set("backgroundImage", bgImg);
+          $container.css("background-image", `url(${bgImg})`);
           $fengche.removeClass("xuanzhuan");
           bgImg = originImageUrl;
         }
         bgImg = originImageUrl;
         isFetchingImg = false;
+        errorCount = 0;
       },
       () => {
+        // 图片加载失败，则重复尝试5次
         errorCount++;
+        isFetchingImg = false;
         if (errorCount < 5) {
           updateBackgroundImage();
         } else {
           $fengche.removeClass("xuanzhuan");
-          isFetchingImg = false;
         }
       }
     );
@@ -88,7 +102,7 @@ function loadImg(url) {
   var image = new Image();
   return new Promise((re, rj) => {
     image.onload = () => {
-      re();
+      re(url);
     };
     image.onerror = () => {
       rj();
