@@ -61611,11 +61611,18 @@ var imgfolder = zip.folder("picdiet");
 var i = 0;
 var blob;
 var fname;
+var _globalFile;
 g('up_txt').addEventListener('click', function() {
+    $('[data-type="btn"]').addClass("disable-click");
     minify();
 })
 input.onchange = minify;
 function minify(){
+    if (input.files.length==0) {
+        input.files = _globalFile;
+    }else{
+        _globalFile = input.files;
+    }
     len = input.files.length * hst;
     g('single_spinner').classList.add('show');
     input.style.display = 'none'
@@ -61670,13 +61677,15 @@ function minify(){
                 g('compress_info').classList.add('show');
                 g('up_txt').innerHTML = g('recompress').value;
                 g('dld').style.width = '120px';
-                // g('dld_original').style.display = 'none';
                 g('uploadimg').style.width = "120px";
+                g('btn-w').style.display = "block";
+                $('[data-type="btn"]').removeClass("disable-click");
             }
             )
         }, 100)
     } else {
         setTimeout(function() {
+            $('[data-type="btn"]').removeClass("disable-click");
             compress_loop();
         }, 100)
     }
@@ -61732,6 +61741,5 @@ function compress_loop() {
         g('pgs_percent').innerHTML = '';
         g('q_value').disabled = false;
         g('dld').style.width = '120px';
-        g('dld_original').style.display = 'none';
     }
 }

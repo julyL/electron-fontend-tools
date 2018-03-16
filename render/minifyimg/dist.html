@@ -16,7 +16,7 @@
 
     <div class="page-minifyimg">
         <header>
-            <div id="title">Picdiet离线加强版,图片压缩神器</div>
+            <div id="title">图片压缩裁剪工具</div>
         </header>
         <main class='mingify-container'>
             <div id="upload" align="center">
@@ -36,7 +36,7 @@
                     </span>
                 </div>
                 <span id="btn-cropper">裁剪图片</span>
-                <div>
+                <div id='btn-w'>
                     <span id="uploadimg">上传图片</span>
                     <span id="dld">下载文件</span>
                 </div>
@@ -62,11 +62,11 @@
                         <span class="right-arr"></span>
                     </div>
                     <div class="img_original" id="img_original">
-                        <span class="compare_title_right" id="o_title">原始: 789KB</span>
+                        <span class="compare_title_right" id="o_title">原始: 789kb</span>
                         <img src="../../assets/image/bg.jpg" alt="woman taking a photo" id="before">
                     </div>
                     <div class="img_compressed" id="img_compressed">
-                        <span class="compare_title" id="p_title">Picdiet: 333KB</span>
+                        <span class="compare_title" id="p_title">Picdiet: 333kb</span>
                         <img src="../../assets/image/bg-compressed.jpg" alt="woman taking a photo" id="after">
                     </div>
                 </div>
@@ -76,13 +76,13 @@
                     <div class="bar">
                         <span class="bar_blue" id="bar_blue"></span>
                         <span class="bar_txt">Picdiet:
-                            <span id="bar_after">333KB</span> (
+                            <span id="bar_after">333kb</span> (
                             <span id="bar_reduction">58%</span> 减小体积)</span>
                     </div>
                     <div class="bar">
                         <span class="bar_pink"></span>
                         <span class="bar_txt">原始:
-                            <span id="bar_pre">789KB</span>
+                            <span id="bar_pre">789kb</span>
                         </span>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
             })
             $box.show();
 
-            $image.cropper("destroy");
+            // $image.cropper("destroy");
             $image.cropper({
                 aspectRatio: 16 / 9
             });

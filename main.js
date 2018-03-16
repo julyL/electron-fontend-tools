@@ -16,10 +16,10 @@ let mainWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1920,
-    height: 1000
+    width: 1077,
+    height: 768
   });
-  mainWindow.webContents.openDevTools({ mode: "right" });
+  // mainWindow.webContents.openDevTools({ mode: "right" });
   // and load the index.html of the app.
   mainWindow.loadURL(
     url.format({

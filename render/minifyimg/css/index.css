@@ -173,15 +173,19 @@ h1 {
 
 .compare_wrapper {
   height: 100%;
+  position: relative;
 }
 
 .compare_wrapper img {
   max-width: 970px;
+  max-height: 900px;
   display: block;
 }
 
 .img_original,
 .img_compressed {
+  top:0;
+  left:0;
   position: absolute;
   overflow-x: hidden;
   max-width: 970px;
@@ -331,7 +335,6 @@ main {
 
 #upload {
   margin-top: 20px;
-  height: 85px;
 }
 
 #upload_btn {
@@ -547,8 +550,13 @@ input[type="range"]::-moz-range-track {
   margin-left: 10px;
 }
 
-.compress_info {
+#btn-w {
   margin-top: 20px;
+  display: none;
+}
+
+.compress_info {
+  margin-top: 15px;
   visibility: hidden;
   opacity: 0;
   transform: scale(0, 0);
@@ -641,8 +649,8 @@ input[type="range"]::-moz-range-track {
 #title {
   display: block;
   text-align: center;
-  font-size: 20px;
-  padding: 35px 0px;
+  font-size: 24px;
+  padding: 35px 0px 30px;
   color: #ff93b7;
   font-family: Arial;
   font-weight: bold;
@@ -663,9 +671,11 @@ input[type="range"]::-moz-range-track {
   transition: width 0.4s;
   text-align: center;
 }
+
 #btn-cropper:hover {
   background: #d9a564;
 }
+
 #cropper-box {
   display: none;
   z-index: 100;
@@ -686,32 +696,37 @@ input[type="range"]::-moz-range-track {
   margin: auto;
   max-width: 970px;
 }
+
 .finish-cropper {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 91px;
+  right: 134px;
   background: #c77777;
   color: #fff;
   text-align: center;
   line-height: 40px;
-  font-size: 13px;
-  padding: 0 11px;
+  font-size: 14px;
+  padding: 0 12px;
   letter-spacing: 1px;
+  border-radius: 3px;
 }
+
 .close-btn {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 13px;
   background: #3d9b98;
   color: #fff;
   text-align: center;
   line-height: 40px;
-  font-size: 13px;
-  padding: 0 16px;
+  font-size: 14px;
   letter-spacing: 1px;
+  width: 100px;
+  border-radius: 3px;
 }
+
 .croppper-img-wrap {
   position: absolute;
   left: 0;
@@ -722,11 +737,12 @@ input[type="range"]::-moz-range-track {
   width: 1000px;
   height: 562px;
 }
+
 #uploadimg {
   display: inline-block;
   width: 0;
   height: 40px;
-  background: #ff93b7;
+  background: #84ddde;
   color: #fff;
   border-radius: 3px;
   vertical-align: middle;
@@ -736,4 +752,18 @@ input[type="range"]::-moz-range-track {
   margin-left: 6px;
   transition: width 0.4s;
   text-align: center;
+}
+
+#uploading:hover {
+  background: #6bc4c5;
+}
+
+.disable-click {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.page-minifyimg {
+  height: 100%;
+  overflow: auto;
 }
