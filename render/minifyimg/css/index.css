@@ -184,8 +184,8 @@ h1 {
 
 .img_original,
 .img_compressed {
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   position: absolute;
   overflow-x: hidden;
   max-width: 970px;
@@ -338,6 +338,7 @@ main {
 }
 
 #upload_btn {
+  position: relative;
   background: #007fff;
   border: 0;
   color: #ffffff;
@@ -546,6 +547,7 @@ input[type="range"]::-moz-range-track {
 }
 
 #pgs_percent {
+  display: none;
   vertical-align: middle;
   margin-left: 10px;
 }
@@ -684,7 +686,13 @@ input[type="range"]::-moz-range-track {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC");
+}
+
+#cropper-box-in {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
 }
 
 .croppper-img {
@@ -697,34 +705,39 @@ input[type="range"]::-moz-range-track {
   max-width: 970px;
 }
 
-.finish-cropper {
+.btn-fixed {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 134px;
-  background: #c77777;
+  right: 10px;
   color: #fff;
   text-align: center;
   line-height: 40px;
   font-size: 14px;
   padding: 0 12px;
   letter-spacing: 1px;
+}
+
+.btn-cropper {
+  min-width: 100px;
+  margin: 0 5px;
+  display: inline-block;
   border-radius: 3px;
+  padding: 0 5px;
+}
+
+.finish-cropper {
+  background: #e9b97c;
+}
+
+.download-cropper {
+  background: #ff93b7;
+  display: none;
+  color: #fff;
 }
 
 .close-btn {
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 13px;
   background: #3d9b98;
-  color: #fff;
-  text-align: center;
-  line-height: 40px;
-  font-size: 14px;
-  letter-spacing: 1px;
-  width: 100px;
-  border-radius: 3px;
 }
 
 .croppper-img-wrap {

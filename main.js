@@ -1,4 +1,10 @@
-const { electron, app, BrowserWindow, Tray, globalShortcut } = require("electron");
+const {
+  electron,
+  app,
+  BrowserWindow,
+  Tray,
+  globalShortcut
+} = require("electron");
 
 require("./main-process/application-menu.js");
 const path = require("path");
@@ -15,8 +21,8 @@ function createWindow() {
     height: 860,
     icon: "./assets/image/app-icon.png"
   });
-
-  let appIcon = new Tray("./assets/image/app-icon.png");
+  let iconPath = path.resolve(__dirname, "./assets/image/app-icon.png");
+  let appIcon = new Tray(iconPath);
 
   // mainWindow.webContents.openDevTools({ mode: "right" });
   // and load the index.html of the app.
@@ -32,27 +38,26 @@ function createWindow() {
   // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
-  mainWindow.on("closed", function() {
+  mainWindow.on("closed", function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
   });
   console.log("create window");
-  // require("./main-process/menus/context-menu");
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", function() {
+app.on("ready", function () {
   createWindow();
 });
 
 var webContentsLoad = false;
 
 // Quit when all windows are closed.
-app.on("window-all-closed", function() {
+app.on("window-all-closed", function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== "darwin") {
@@ -60,7 +65,7 @@ app.on("window-all-closed", function() {
   }
 });
 
-app.on("activate", function() {
+app.on("activate", function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {

@@ -1,6 +1,7 @@
-const $ = require("jquery");
-const store = require("./store");
-const fetchImgIdFromPage = require("./fetchImgIdFromPage");
+const $ = require("jquery"),
+  store = require("./store"),
+  fetchImgIdFromPage = require("./fetchImgIdFromPage");
+
 var $item = $(".btn-item"),
   $links = $('link[rel="import"]'),
   $pageContainer = $("#page-wrap"),
@@ -14,6 +15,7 @@ if (bgimg) {
   $container.css("background-image", `url(${bgimg})`);
 }
 
+// 动画结束后移除animate类
 $item.on("animationend", () => {
   $item.removeClass("zoomIn animated");
 });
@@ -50,6 +52,11 @@ $randomImg.on("click", function() {
   updateBackgroundImage(false);
 });
 
+/**
+ * 更新背景图片
+ * @param {Boolean} ispreload 是否是预加载(预加载情况下只下载图片,并不更新背景图)
+ * @returns
+ */
 function updateBackgroundImage(ispreload) {
   // debugger;
   if (isFetchingImg) {
@@ -97,6 +104,13 @@ function updateBackgroundImage(ispreload) {
     );
 }
 
+/**
+ * 根据图片id获取相应的图片
+ *
+ * @param {String} id 图片的id
+ * @param {String} type 图片的类型(preview:预览图, 默认:原图)
+ * @returns
+ */
 function getImgUrlFromId(id, type) {
   if (type == "preview") {
     return "https://alpha.wallhaven.cc/wallpapers/thumb/small/th-" + id + ".jpg";

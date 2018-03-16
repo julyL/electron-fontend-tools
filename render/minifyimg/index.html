@@ -84,45 +84,62 @@
             <input id="recompress" type="hidden" value="继续压缩图像">
         </footer>
         <div id="cropper-box">
-            <div class="croppper-img-wrap">
-                <img src="" alt="" class="croppper-img">
+            <div id="cropper-box-in">
+                <div class="croppper-img-wrap">
+                    <img src="" alt="" class="croppper-img">
+                </div>
+                <div class="btn-fixed">
+                    <a class="download-cropper btn-cropper" download="cropper.jpg">下载裁剪图片</a>
+                    <div class="finish-cropper btn-cropper">进行裁剪</div>
+                    <div class="close-btn btn-cropper">关闭</div>
+                </div>
             </div>
-            <div class="close-btn">关闭</div>
-            <a class="finish-cropper" download="cropper.jpg">下载裁剪图片</a>
         </div>
     </div>
-        <script>
-            var imgurl,
-                $compressImage = $("#after"),
-                $image = $(".croppper-img"),
-                $box = $("#cropper-box"),
-                $cropperImgWrap = $("#croppper-img-wrap");
-            $("#btn-cropper").on("click", function () {
-                $image.attr("src", $compressImage.attr("src"));
-                $cropperImgWrap.css({
-                    height: $compressImage.height(),
-                    width: $compressImage.width()
-                })
-                $box.show();
+    <script>
+        var imgurl,
+            $compressImage = $("#after"),
+            $image = $(".croppper-img"),
+            $box = $("#cropper-box"),
+            $cropperImgWrap = $("#croppper-img-wrap"),
+            $finishCropper = $(".finish-cropper"),
+            $downloadCropper = $(".download-cropper");
 
-                $image.cropper("destroy");
-                $image.cropper({
-                    aspectRatio: 16 / 9
-                });
+        $("#btn-cropper").on("click", function () {
+            $image.attr("src", $compressImage.attr("src"));
+            $cropperImgWrap.css({
+                height: $compressImage.height(),
+                width: $compressImage.width()
             })
+            $box.show();
 
-            $(".close-btn").on("click", function () {
-                $box.hide();
-            })
-
-            $(".finish-cropper").on("click", function () {
-                var canvas = $image.cropper("getCroppedCanvas");
-                $(".finish-cropper").attr('href', canvas.toDataURL("image/png"));
+            $image.cropper("destroy");
+            $image.cropper({
+                aspectRatio: 16 / 9
             });
 
-            $("#uploadimg").on("click", function () {
-                $("#input").trigger("click");
-            })
+            $downloadCropper.hide();
+        })
 
-        </script>
+
+        $(".close-btn").on("click", function () {
+            $box.hide();
+        })
+
+        $finishCropper.on("click", function () {
+            var action = $(this).attr("data-action");
+            var canvas = $image.cropper("getCroppedCanvas", {
+                imageSmoothingQuality: "high"
+            });
+            $finishCropper.html("正在裁剪中...")
+            canvas.toBlob((blob) => {
+                $finishCropper.html("进行裁剪");
+                $downloadCropper.attr('href', URL.createObjectURL(blob)).css("display", "inline-block");
+            })
+        });
+
+        $("#uploadimg").on("click", function () {
+            $("#input").trigger("click");
+        })
+    </script>
 </template>

@@ -1,3 +1,5 @@
+// 简单的localStorage封装
+
 var store = {};
 store.get = function(key) {
   var val = localStorage.getItem(key);

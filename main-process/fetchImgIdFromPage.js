@@ -3,9 +3,15 @@ const cheerio = require("cheerio");
 const Q = require("jquery");
 const store = require("./store");
 var imglist = [], //抓取到的图片列表
+  pageUrlForFetchImg =
+    "https://alpha.wallhaven.cc/search?q=nature&search_image=&categories=110&purity=110&sorting=favorites&order=desc&page=",
   imgNumberInPage = 24, // 每页最多24张图片
   totalPages = 1600;
 
+/**
+ * 从页面中提取图片id
+ * @returns
+ */
 function fetchImgIdFromPage() {
   var randomImgMsg = store.get("randomImgMsg");
   if (typeof randomImgMsg != "object" || randomImgMsg === null) {
@@ -14,9 +20,7 @@ function fetchImgIdFromPage() {
       index: 1
     };
   }
-  var url =
-    "https://alpha.wallhaven.cc/search?q=nature&search_image=&categories=110&purity=110&sorting=favorites&order=desc&page=" +
-    randomImgMsg.page;
+  var url = pageUrlForFetchImg + randomImgMsg.page;
   return new Promise((re, rj) => {
     if (randomImgMsg.index == imgNumberInPage - 1) {
       store.set("randomImgMsg", {
@@ -36,24 +40,27 @@ function fetchImgIdFromPage() {
       re(imgid);
       return;
     }
-
+    // 抓取页面数据,获取到图片的id
     request(url, (err, data) => {
       if (err) {
         rj(err);
         return;
       }
-
       let $ = cheerio.load(data.body);
       $(".preview").each((ind, el) => {
         imglist.push($(el).attr("href"));
       });
-      console.log("imglist:", imglist);
       let imgid = splitIdFromPath(imglist[randomImgMsg.index]);
       re(imgid);
     });
   });
 }
 
+/**
+ * 从路径中提取出图片id
+ * @param {String} path
+ * @returns
+ */
 function splitIdFromPath(path) {
   var s = path.split("/");
   return s[s.length - 1];
