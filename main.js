@@ -1,11 +1,6 @@
-const electron = require("electron");
+const { electron, app, BrowserWindow, Tray, globalShortcut } = require("electron");
 
-// Module to control application life.
-const { app, globalShortcut } = electron;
-
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
-
+require("./main-process/application-menu.js");
 const path = require("path");
 const url = require("url");
 
@@ -16,9 +11,13 @@ let mainWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1077,
-    height: 768
+    width: 1350,
+    height: 860,
+    icon: "./assets/image/app-icon.png"
   });
+
+  let appIcon = new Tray("./assets/image/app-icon.png");
+
   // mainWindow.webContents.openDevTools({ mode: "right" });
   // and load the index.html of the app.
   mainWindow.loadURL(

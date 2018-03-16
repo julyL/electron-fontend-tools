@@ -6,6 +6,7 @@ var $item = $(".btn-item"),
   $pageContainer = $("#page-wrap"),
   $close = $("#page-wrap-close"),
   $container = $("#container"),
+  $content = $("#content"),
   html;
 
 var bgimg = store.get("backgroundImage");
