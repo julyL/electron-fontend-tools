@@ -1,6 +1,16 @@
 ### electron-fontend-tools
     用electron做的一个小应用,内置各种小工具.
-    使用: 解压rar文件,运行exe
+
+#### 本地执行和打包
+```
+ // 本地运行
+ npm install
+ npm run start
+
+ // 本地打包
+ npm install electron-packager -g
+ npm run package:win64   // 打包成win64系统
+```
 
 #### 相关说明
 
