@@ -1,5 +1,6 @@
 ### electron-fontend-tools
-    用electron做的一个小应用,内置各种小工具
+    用electron做的一个小应用,内置各种小工具.
+    使用: 解压rar文件,运行exe
 
 #### 相关说明
 
