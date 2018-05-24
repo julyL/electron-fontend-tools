@@ -4,8 +4,12 @@
   "description": "a collecting tools",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",    
+    "start": "electron .",
     "package": "npm-run-all package:*",
+    "build:mac": "electron-builder --platform=mac",
+    "build:win32": "electron-builder --platform=win32",
+    "build:win64": "electron-builder --platform=win",
+    "build:linux": "electron-builde  --platform=linux",
     "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64",
     "package:win32": "electron-packager . --overwrite --platform=win32 --arch=ia32",
     "package:win64": "electron-packager . --overwrite --platform=win32 --arch=x64",
@@ -19,12 +23,25 @@
   ],
   "author": "julyL",
   "devDependencies": {
-    "electron": "~1.8.2"
+    "electron": "~1.8.2",
+    "electron-builder": "^20.13.4"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "dayjs": "^1.5.19",
+    "install": "^0.11.0",
+    "ip": "^1.1.5",
     "jquery": "^3.3.1",
+    "koa": "^2.5.1",
+    "koa-ejs": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
     "lodash": "^4.17.5",
-    "request": "^2.85.0"
+    "log4js": "^2.6.1",
+    "node-notifier": "^5.2.1",
+    "open": "^0.0.5",
+    "qrcode": "^1.2.0",
+    "request": "^2.85.0",
+    "tar": "^4.4.2"
   }
 }

@@ -1,0 +1,12 @@
+<template class='page-template'>
+  <link rel="stylesheet" href="./render/staticserver/static/css/app.css" />
+  <body>
+    <div id="holder" style="-webkit-app-region: drag">
+      <div class="center">拖入文件夹启动服务</div>
+    </div>
+    <script>
+        delete require.cache[require.resolve('./render/staticserver/main/index.js')]
+        require("./render/staticserver/main/index.js");
+    </script>
+</body>
+<template>

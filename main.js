@@ -3,12 +3,17 @@ const {
   app,
   BrowserWindow,
   Tray,
+  Menu,
   globalShortcut
 } = require("electron");
 
 require("./main-process/application-menu.js");
 const path = require("path");
 const url = require("url");
+const logger = require("./main-process/logger.js");
+process.on('uncaughtException', err => {
+  logger.error(err)
+})
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,6 +28,17 @@ function createWindow() {
   });
   let iconPath = path.resolve(__dirname, "./assets/image/app-icon.png");
   let appIcon = new Tray(iconPath);
+
+  var trayMenuTemplate = [{
+    label: '退出',
+    click: function () {
+      app.quit();
+    }
+  }];
+  const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
+  appIcon.setToolTip('create by julyL!');
+  appIcon.setContextMenu(contextMenu);
+
 
   // mainWindow.webContents.openDevTools({ mode: "right" });
   // and load the index.html of the app.

@@ -1,2 +1,4 @@
 /node_modules/**
+**/*.log
+/.vscode/**
 /electron-fontend-tools-win32-x64/**

@@ -9,7 +9,10 @@ var $item = $(".btn-item"),
   $container = $("#container"),
   $content = $("#content"),
   html;
-
+  
+document.addEventListener('dragover', event => event.preventDefault());
+document.addEventListener('drop', event => event.preventDefault());
+  
 var bgimg = store.get("backgroundImage");
 if (bgimg) {
   $container.css("background-image", `url(${bgimg})`);
@@ -22,7 +25,7 @@ $item.on("animationend", () => {
 
 // 关闭页面
 $close.on("click", function() {
-  $pageContainer.hide();
+  $pageContainer.fadeOut(250);
 });
 
 // 切换页面
@@ -32,7 +35,7 @@ $item.on("click", function() {
   html = $links.filter('[data-importpage="' + page + '"]')[0].import.querySelector(".page-template").innerHTML;
   $pageContainer.find("#page-template-container").html(html);
   setTimeout(() => {
-    $pageContainer.show();
+    $pageContainer.fadeIn(250);
   }, 17);
 });
 
@@ -45,10 +48,10 @@ var $randomImg = $("#random-bg"),
 updateBackgroundImage(true);
 
 $randomImg.on("click", function() {
+  $fengche.addClass("xuanzhuan");
   if (isFetchingImg) {
     return;
   }
-  $fengche.addClass("xuanzhuan");
   updateBackgroundImage(false);
 });
 

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./assets/css/animate.css">
   <link rel="stylesheet" href="./assets/css/index.css">
 </head>
+<link rel="import" href="./render/staticserver/index.html" data-importpage="staticserver">
 <link rel="import" href="./render/minifyimg/index.html" data-importpage="minifyimg">
 <link rel="import" href="./render/qrcode/index.html" data-importpage="qrcode">
 <link rel="import" href="./render/jsonformat/index.html" data-importpage="jsonformat">
@@ -15,6 +16,9 @@
 <div id="container">
   <div id="content">
     <div id="btn-list">
+      <div class="btn-item zoomIn animated" data-page="staticserver">
+        <div class="item-word">静态服务器</div>
+      </div>
       <div class="btn-item zoomIn animated" data-page="minifyimg">
         <div class="item-word">图片压缩</div>
       </div>
@@ -44,8 +48,16 @@
 
 <body>
   <script>
-    require('./main-process/index.js')
-    require('./renderer.js')
+    const logger = require('./main-process/logger');
+    try {
+      process.on('uncaughtException', err => {
+        logger.error(err)
+      })
+      require('./main-process/index.js')
+      require('./renderer.js')
+    } catch (err) {
+      logger.error(err)
+    }
   </script>
 </body>
 
