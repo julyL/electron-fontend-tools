@@ -71,9 +71,13 @@ module.exports = function (config) {
             } else if (ctx.query && ctx.query.download == 1) { // ?download=1 则返回直接返回压缩后的文件
                 let filepath = path.resolve(startpath, url.split("?")[0].slice(0, -4)),
                     tgzfile = path.resolve(filepath, '../' + path.basename(filepath) + '.tgz');
-                await util.createzlib(filepath);
-                ctx.body = fs.createReadStream(tgzfile);
-                fs.unlink(tgzfile);
+                try {
+                    await util.createzlib(filepath);
+                    ctx.body = fs.createReadStream(tgzfile);
+                    fs.unlink(tgzfile);
+                } catch (err) {
+                    console.log(err);
+                }
             } else {
                 let filepath = path.resolve(startpath, url);
                 let stat = fs.statSync(filepath);
