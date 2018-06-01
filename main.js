@@ -22,9 +22,11 @@ let mainWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    icon: "./assets/image/app-icon.png",
     width: 1350,
-    height: 860,
-    icon: "./assets/image/app-icon.png"
+    height: 860
+    // width: 1000,
+    // height: 800
   });
   let iconPath = path.resolve(__dirname, "./assets/image/app-icon.png");
   let appIcon = new Tray(iconPath);
@@ -47,6 +49,7 @@ function createWindow() {
       pathname: path.join(__dirname, "index.html"),
       protocol: "file:",
       slashes: true
+      // pathname: "https://wx.qq.com/",
     })
   );
 

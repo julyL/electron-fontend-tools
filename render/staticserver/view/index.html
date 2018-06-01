@@ -29,9 +29,9 @@
                             <%= file.mtime %>
                         </span>
                         <% if(file.dir) {%>
-                            <a class="download" href="<%= path?'./'+ path:'' %>/<%= file.name %>.tgz?download=1">打包</a>
+                            <a class="download" href="<%= path?'/'+ path:'' %>/<%= file.name %>.tgz?download=1">打包</a>
                         <% }else{%>
-                            <a class="download" href="<%= path?'./' + path:'' %>/<%= file.name %>" download>下载</a>
+                            <a class="download" href="<%= path?'/' + path:'' %>/<%= file.name %>" download>下载</a>
                         <% }%>
                         
                     </div>

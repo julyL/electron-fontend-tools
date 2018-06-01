@@ -51,6 +51,7 @@ body {
 
 #btn-list {
   overflow: hidden;
+  margin-top: 40px;
 }
 
 .btn-item {
